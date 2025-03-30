@@ -1,0 +1,42 @@
+package org.apache.rocketmq.mcp.common;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.rocketmq.acl.common.AclClientRPCHook;
+import org.apache.rocketmq.acl.common.SessionCredentials;
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.tools.admin.DefaultMQAdminExt;
+
+import java.util.function.Function;
+
+public class AdminUtil {
+    private static String DEFAULT_NAME_SERVER = System.getProperty("NS_ADDR", System.getenv("NS_ADDR"));
+    private static String DEFAULT_AK = System.getProperty("AK", System.getenv("AK"));
+    private static String DEFAULT_SK = System.getProperty("SK", System.getenv("SK"));
+
+    public static String callAdmin(Function<DefaultMQAdminExt, String> func, String ak, String sk, String nameserverAddressList) throws MQClientException {
+        String _ns = (nameserverAddressList == null || nameserverAddressList.trim().isEmpty()) ? DEFAULT_NAME_SERVER : nameserverAddressList.trim();
+        String _ak = (ak == null || ak.trim().isEmpty()) ? DEFAULT_AK : ak.trim();
+        String _sk = (sk == null || sk.trim().isEmpty()) ? DEFAULT_SK : sk.trim();
+        DefaultMQAdminExt admin = getAdmin(_ns, _ak, _sk);
+        try {
+            return func.apply(admin);
+        } catch (Exception ex) {
+            return ex.getMessage();
+        } finally {
+            admin.shutdown();
+        }
+    }
+
+    public static DefaultMQAdminExt getAdmin(String nameserverAddressList, String ak, String sk) throws MQClientException {
+        DefaultMQAdminExt admin = null;
+        if (StringUtils.isNotBlank(ak) && StringUtils.isNotBlank(sk)) {
+            admin = new DefaultMQAdminExt(new AclClientRPCHook(new SessionCredentials(ak, sk)));
+        } else {
+            admin = new DefaultMQAdminExt();
+        }
+        admin.setNamesrvAddr(nameserverAddressList);
+        admin.start();
+        return admin;
+    }
+
+}
