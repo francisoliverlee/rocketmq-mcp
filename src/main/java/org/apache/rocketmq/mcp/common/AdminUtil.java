@@ -9,9 +9,9 @@ import org.apache.rocketmq.tools.admin.DefaultMQAdminExt;
 import java.util.function.Function;
 
 public class AdminUtil {
-    private static String DEFAULT_NAME_SERVER = System.getProperty("NS_ADDR", System.getenv("NS_ADDR"));
-    private static String DEFAULT_AK = System.getProperty("AK", System.getenv("AK"));
-    private static String DEFAULT_SK = System.getProperty("SK", System.getenv("SK"));
+    private static final String DEFAULT_NAME_SERVER = System.getProperty("NS_ADDR", System.getenv("NS_ADDR"));
+    private static final String DEFAULT_AK = System.getProperty("AK", System.getenv("AK"));
+    private static final String DEFAULT_SK = System.getProperty("SK", System.getenv("SK"));
 
     public static String callAdmin(Function<DefaultMQAdminExt, String> func, String ak, String sk, String nameserverAddressList) throws MQClientException {
         String _ns = (nameserverAddressList == null || nameserverAddressList.trim().isEmpty()) ? DEFAULT_NAME_SERVER : nameserverAddressList.trim();
