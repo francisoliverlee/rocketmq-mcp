@@ -7,12 +7,14 @@ import org.apache.rocketmq.mcp.common.AdminUtil;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 
+import java.util.List;
+
 @org.springframework.stereotype.Service
 public class Message {
 
 
     @Tool(description = "直接消费消息")
-    public String consumeMessageDirectly(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String consumeMessageDirectly(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "消费者组") String consumerGroup,
@@ -30,7 +32,7 @@ public class Message {
 
 
     @Tool(description = "查询消息")
-    public String viewMessage(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String viewMessage(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                               @ToolParam(description = "access key or ak") String ak,
                               @ToolParam(description = "secret key or sk") String sk,
                               @ToolParam(description = "主题名称") String topic,
@@ -46,7 +48,7 @@ public class Message {
 
 
     @Tool(description = "清理过期消息")
-    public String cleanExpiredMessages(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String cleanExpiredMessages(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                        @ToolParam(description = "access key or ak") String ak,
                                        @ToolParam(description = "secret key or sk") String sk,
                                        @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
@@ -61,7 +63,7 @@ public class Message {
     }
 
     @Tool(description = "查询消息")
-    public String queryMessageByKey(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String queryMessageByKey(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                     @ToolParam(description = "access key or ak") String ak,
                                     @ToolParam(description = "secret key or sk") String sk,
                                     @ToolParam(description = "主题") String topic,
@@ -79,7 +81,7 @@ public class Message {
     }
 
     @Tool(description = "查询消息(按集群)")
-    public String queryMessageById(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String queryMessageById(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                    @ToolParam(description = "access key or ak") String ak,
                                    @ToolParam(description = "secret key or sk") String sk,
                                    @ToolParam(description = "集群名称") String clusterName,
@@ -95,7 +97,7 @@ public class Message {
     }
 
     @Tool(description = "恢复检查半消息")
-    public String resumeCheckHalfMessage(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String resumeCheckHalfMessage(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "主题") String topic,
@@ -110,7 +112,7 @@ public class Message {
     }
 
     @Tool(description = "获取消息轨迹详情")
-    public String messageTrackDetail(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String messageTrackDetail(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                      @ToolParam(description = "access key or ak") String ak,
                                      @ToolParam(description = "secret key or sk") String sk,
                                      @ToolParam(description = "消息") String messageJson) throws MQClientException {
@@ -125,7 +127,7 @@ public class Message {
     }
 
     @Tool(description = "获取消息轨迹详情(并发)")
-    public String messageTrackDetailConcurrent(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String messageTrackDetailConcurrent(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                @ToolParam(description = "access key or ak") String ak,
                                                @ToolParam(description = "secret key or sk") String sk,
                                                @ToolParam(description = "消息") String messageJson) throws MQClientException {

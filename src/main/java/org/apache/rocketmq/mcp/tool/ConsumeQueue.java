@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class ConsumeQueue {
 
     @Tool(description = "检查RocksDB CQ写入进度")
-    public String checkRocksdbCqWriteProgress(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String checkRocksdbCqWriteProgress(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                               @ToolParam(description = "access key or ak") String ak,
                                               @ToolParam(description = "secret key or sk") String sk,
                                               @ToolParam(description = "broker地址") String brokerAddr,
@@ -30,7 +30,7 @@ public class ConsumeQueue {
     }
 
     @Tool(description = "查询消费队列数据")
-    public String queryConsumeQueue(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String queryConsumeQueue(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                     @ToolParam(description = "access key or ak") String ak,
                                     @ToolParam(description = "secret key or sk") String sk,
                                     @ToolParam(description = "broker地址") String brokerAddr,
@@ -49,7 +49,7 @@ public class ConsumeQueue {
     }
 
     @Tool(description = "导出RocksDB配置到JSON")
-    public String exportRocksDBConfigToJson(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String exportRocksDBConfigToJson(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                             @ToolParam(description = "access key or ak") String ak,
                                             @ToolParam(description = "secret key or sk") String sk,
                                             @ToolParam(description = "broker地址") String brokerAddr,
@@ -68,7 +68,7 @@ public class ConsumeQueue {
     }
 
     @Tool(description = "清理过期消费队列")
-    public String cleanExpiredConsumerQueue(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String cleanExpiredConsumerQueue(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                             @ToolParam(description = "access key or ak") String ak,
                                             @ToolParam(description = "secret key or sk") String sk,
                                             @ToolParam(description = "集群名称") String cluster) throws MQClientException {
@@ -82,7 +82,7 @@ public class ConsumeQueue {
     }
 
     @Tool(description = "清理过期消费队列(按地址)")
-    public String cleanExpiredConsumerQueueByAddr(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String cleanExpiredConsumerQueueByAddr(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                   @ToolParam(description = "access key or ak") String ak,
                                                   @ToolParam(description = "secret key or sk") String sk,
                                                   @ToolParam(description = "broker地址") String addr) throws MQClientException {

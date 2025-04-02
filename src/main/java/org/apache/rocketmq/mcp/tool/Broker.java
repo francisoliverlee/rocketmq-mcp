@@ -30,7 +30,7 @@ public class Broker {
     }
 
     @Tool(description = "获取Broker统计信息")
-    public String getBrokerRuntimeStats(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getBrokerRuntimeStats(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                           @ToolParam(description = "access key or ak") String ak,
                                           @ToolParam(description = "secret key or sk") String sk,
                                           @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
@@ -44,7 +44,7 @@ public class Broker {
     }
 
     @Tool(description = "获取Broker配置信息")
-    public String getBrokerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getBrokerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                   @ToolParam(description = "access key or ak") String ak,
                                   @ToolParam(description = "secret key or sk") String sk,
                                   @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
@@ -58,7 +58,7 @@ public class Broker {
     }
 
     @Tool(description = "更新Broker配置")
-    public String updateBrokerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateBrokerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                      @ToolParam(description = "access key or ak") String ak,
                                      @ToolParam(description = "secret key or sk") String sk,
                                      @ToolParam(description = "broker地址") String brokerAddr,
@@ -83,7 +83,7 @@ public class Broker {
     }
 
     @Tool(description = "获取全部broker地址列表")
-    public String getAllBrokerAddresses(@ToolParam(description = "nameserver / namesrv 地址列表") String nameserverAddressList,
+    public String getAllBrokerAddresses(@ToolParam(description = "nameserver / namesrv 地址列表") List<String> nameserverAddressList,
                                         @ToolParam(description = "access key or ak") String ak,
                                         @ToolParam(description = "secret key or sk") String sk) throws MQClientException {
         return AdminUtil.callAdmin(admin -> {
@@ -96,7 +96,7 @@ public class Broker {
     }
 
     @Tool(description = "添加broker到容器")
-    public String addBrokerToContainer(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String addBrokerToContainer(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                        @ToolParam(description = "access key or ak") String ak,
                                        @ToolParam(description = "secret key or sk") String sk,
                                        @ToolParam(description = "broker容器地址") String brokerContainerAddr,
@@ -112,7 +112,7 @@ public class Broker {
     }
 
     @Tool(description = "从容器中移除broker")
-    public String removeBrokerFromContainer(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String removeBrokerFromContainer(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                             @ToolParam(description = "access key or ak") String ak,
                                             @ToolParam(description = "secret key or sk") String sk,
                                             @ToolParam(description = "broker容器地址") String brokerContainerAddr,
@@ -130,7 +130,7 @@ public class Broker {
     }
 
     @Tool(description = "重置主节点刷新偏移量")
-    public String resetMasterFlushOffset(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String resetMasterFlushOffset(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "broker地址") String brokerAddr,
@@ -146,7 +146,7 @@ public class Broker {
     }
 
     @Tool(description = "获取Broker HA状态")
-    public String getBrokerHAStatus(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getBrokerHAStatus(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                     @ToolParam(description = "access key or ak") String ak,
                                     @ToolParam(description = "secret key or sk") String sk,
                                     @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
@@ -160,7 +160,7 @@ public class Broker {
     }
 
     @Tool(description = "获取Broker Epoch缓存")
-    public String getBrokerEpochCache(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getBrokerEpochCache(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                       @ToolParam(description = "access key or ak") String ak,
                                       @ToolParam(description = "secret key or sk") String sk,
                                       @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
@@ -174,7 +174,7 @@ public class Broker {
     }
 
     @Tool(description = "设置CommitLog预读模式")
-    public String setCommitLogReadAheadMode(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String setCommitLogReadAheadMode(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                             @ToolParam(description = "access key or ak") String ak,
                                             @ToolParam(description = "secret key or sk") String sk,
                                             @ToolParam(description = "broker地址") String brokerAddr,
@@ -189,7 +189,7 @@ public class Broker {
     }
 
     @Tool(description = "获取冷数据流控制信息")
-    public String getColdDataFlowCtrInfo(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getColdDataFlowCtrInfo(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
@@ -203,7 +203,7 @@ public class Broker {
     }
 
     @Tool(description = "更新冷数据流控制组配置")
-    public String updateColdDataFlowCtrGroupConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateColdDataFlowCtrGroupConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                    @ToolParam(description = "access key or ak") String ak,
                                                    @ToolParam(description = "secret key or sk") String sk,
                                                    @ToolParam(description = "broker地址") String brokerAddr,
@@ -219,7 +219,7 @@ public class Broker {
     }
 
     @Tool(description = "移除冷数据流控制组配置")
-    public String removeColdDataFlowCtrGroupConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String removeColdDataFlowCtrGroupConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                    @ToolParam(description = "access key or ak") String ak,
                                                    @ToolParam(description = "secret key or sk") String sk,
                                                    @ToolParam(description = "broker地址") String brokerAddr,
@@ -235,7 +235,7 @@ public class Broker {
     }
 
     @Tool(description = "查看Broker统计信息")
-    public String viewBrokerStatsData(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String viewBrokerStatsData(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                       @ToolParam(description = "access key or ak") String ak,
                                       @ToolParam(description = "secret key or sk") String sk,
                                       @ToolParam(description = "broker地址") String brokerAddr,
@@ -251,7 +251,7 @@ public class Broker {
     }
 
     @Tool(description = "删除过期提交日志")
-    public String deleteExpiredCommitLog(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String deleteExpiredCommitLog(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "集群名称") String cluster) throws MQClientException {
@@ -265,7 +265,7 @@ public class Broker {
     }
 
     @Tool(description = "删除过期提交日志(按地址)")
-    public String deleteExpiredCommitLogByAddr(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String deleteExpiredCommitLogByAddr(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                @ToolParam(description = "access key or ak") String ak,
                                                @ToolParam(description = "secret key or sk") String sk,
                                                @ToolParam(description = "broker地址") String addr) throws MQClientException {
@@ -279,7 +279,7 @@ public class Broker {
     }
 
     @Tool(description = "搜索偏移量")
-    public String searchOffset(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String searchOffset(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                @ToolParam(description = "access key or ak") String ak,
                                @ToolParam(description = "secret key or sk") String sk,
                                @ToolParam(description = "broker地址") String brokerAddr,

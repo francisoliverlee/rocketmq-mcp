@@ -16,7 +16,7 @@ import java.util.Properties;
 public class Controller {
 
     @Tool(description = "更新控制器配置")
-    public String updateControllerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateControllerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "配置属性") Properties properties,
@@ -32,7 +32,7 @@ public class Controller {
     }
 
     @Tool(description = "获取控制器配置")
-    public String getControllerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getControllerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                       @ToolParam(description = "access key or ak") String ak,
                                       @ToolParam(description = "secret key or sk") String sk,
                                       @ToolParam(description = "控制器地址列表") List<String> controllers) throws MQClientException {
@@ -46,7 +46,7 @@ public class Controller {
     }
 
     @Tool(description = "选举主节点")
-    public String electMaster(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String electMaster(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                               @ToolParam(description = "access key or ak") String ak,
                               @ToolParam(description = "secret key or sk") String sk,
                               @ToolParam(description = "控制器地址") String controllerAddr,
@@ -65,7 +65,7 @@ public class Controller {
     }
 
     @Tool(description = "清理控制器broker元数据")
-    public String cleanControllerBrokerData(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String cleanControllerBrokerData(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                             @ToolParam(description = "access key or ak") String ak,
                                             @ToolParam(description = "secret key or sk") String sk,
                                             @ToolParam(description = "控制器地址") String controllerAddr,
@@ -85,7 +85,7 @@ public class Controller {
     }
 
     @Tool(description = "获取同步状态数据")
-    public String getInSyncStateData(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getInSyncStateData(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                      @ToolParam(description = "access key or ak") String ak,
                                      @ToolParam(description = "secret key or sk") String sk,
                                      @ToolParam(description = "控制器地址") String controllerAddress,
@@ -100,7 +100,7 @@ public class Controller {
     }
 
     @Tool(description = "获取控制器元数据")
-    public String getControllerMetaData(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getControllerMetaData(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                         @ToolParam(description = "access key or ak") String ak,
                                         @ToolParam(description = "secret key or sk") String sk,
                                         @ToolParam(description = "控制器地址") String controllerAddr) throws MQClientException {

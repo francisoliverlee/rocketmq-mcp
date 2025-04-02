@@ -6,6 +6,7 @@ import org.apache.rocketmq.acl.common.SessionCredentials;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.tools.admin.DefaultMQAdminExt;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class AdminUtil {
@@ -13,8 +14,8 @@ public class AdminUtil {
     private static final String DEFAULT_AK = System.getProperty("AK", System.getenv("AK"));
     private static final String DEFAULT_SK = System.getProperty("SK", System.getenv("SK"));
 
-    public static String callAdmin(Function<DefaultMQAdminExt, String> func, String ak, String sk, String nameserverAddressList) throws MQClientException {
-        String _ns = (nameserverAddressList == null || nameserverAddressList.trim().isEmpty()) ? DEFAULT_NAME_SERVER : nameserverAddressList.trim();
+    public static String callAdmin(Function<DefaultMQAdminExt, String> func, String ak, String sk, List<String> nameserverAddressList) throws MQClientException {
+        String _ns = (nameserverAddressList == null || nameserverAddressList.isEmpty()) ? DEFAULT_NAME_SERVER : StringUtils.join(nameserverAddressList, ";");
         String _ak = (ak == null || ak.trim().isEmpty()) ? DEFAULT_AK : ak.trim();
         String _sk = (sk == null || sk.trim().isEmpty()) ? DEFAULT_SK : sk.trim();
         DefaultMQAdminExt admin = getAdmin(_ns, _ak, _sk);

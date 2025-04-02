@@ -6,11 +6,13 @@ import org.apache.rocketmq.mcp.common.AdminUtil;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 
+import java.util.List;
+
 @org.springframework.stereotype.Service
 public class Producer {
 
     @Tool(description = "获取生产者连接信息")
-    public String examineProducerConnectionInfo(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String examineProducerConnectionInfo(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                 @ToolParam(description = "access key or ak") String ak,
                                                 @ToolParam(description = "secret key or sk") String sk,
                                                 @ToolParam(description = "生产者组名称") String producerGroup,
@@ -25,7 +27,7 @@ public class Producer {
     }
 
     @Tool(description = "获取所有生产者信息")
-    public String getAllProducerInfo(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getAllProducerInfo(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                      @ToolParam(description = "access key or ak") String ak,
                                      @ToolParam(description = "secret key or sk") String sk,
                                      @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {

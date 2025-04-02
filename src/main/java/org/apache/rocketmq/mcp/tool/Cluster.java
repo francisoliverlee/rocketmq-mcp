@@ -6,6 +6,8 @@ import org.apache.rocketmq.mcp.common.AdminUtil;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 
+import java.util.List;
+
 /**
  * 利用rocketmq的admin接口提供rocketmq集群信息管理服务
  */
@@ -13,7 +15,7 @@ import org.springframework.ai.tool.annotation.ToolParam;
 public class Cluster {
 
     @Tool(description = "获取集群信息")
-    public String getClusterInfo(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getClusterInfo(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                  @ToolParam(description = "access key or ak") String ak,
                                  @ToolParam(description = "secret key or sk") String sk) throws MQClientException {
         return AdminUtil.callAdmin(admin -> {
@@ -24,20 +26,4 @@ public class Cluster {
             }
         }, ak, sk, nameserverAddressList);
     }
-
-    @Tool(description = "获取集群列表")
-    public String getClusterList(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
-                                 @ToolParam(description = "access key or ak") String ak,
-                                 @ToolParam(description = "secret key or sk") String sk,
-                                 @ToolParam(description = "主题") String topic) throws MQClientException {
-        return AdminUtil.callAdmin(admin -> {
-            try {
-                return JSON.toJSONString(admin.getClusterList(topic));
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
-        }, ak, sk, nameserverAddressList);
-    }
-
-
 }

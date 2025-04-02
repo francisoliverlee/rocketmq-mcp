@@ -12,7 +12,7 @@ import java.util.List;
 @org.springframework.stereotype.Service
 public class Acl {
     @Tool(description = "创建和更新acl配置")
-    public String createAndUpdatePlainAccessConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String createAndUpdatePlainAccessConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                    @ToolParam(description = "access key or ak") String ak,
                                                    @ToolParam(description = "secret key or sk") String sk,
                                                    @ToolParam(description = "broker地址") String addr,
@@ -28,7 +28,7 @@ public class Acl {
     }
 
     @Tool(description = "删除acl配置")
-    public String deletePlainAccessConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String deletePlainAccessConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                           @ToolParam(description = "access key or ak") String ak,
                                           @ToolParam(description = "secret key or sk") String sk,
                                           @ToolParam(description = "broker地址") String addr,
@@ -44,7 +44,7 @@ public class Acl {
     }
 
     @Tool(description = "更新acl全局白名单ip地址")
-    public String updateGlobalWhiteAddrConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateGlobalWhiteAddrConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                               @ToolParam(description = "access key or ak") String ak,
                                               @ToolParam(description = "secret key or sk") String sk,
                                               @ToolParam(description = "broker地址") String addr,
@@ -60,7 +60,7 @@ public class Acl {
     }
 
     @Tool(description = "更新acl全局白名单地址ip")
-    public String updateGlobalWhiteAddrConfigWithAcl(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateGlobalWhiteAddrConfigWithAcl(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                                      @ToolParam(description = "access key or ak") String ak,
                                                      @ToolParam(description = "secret key or sk") String sk,
                                                      @ToolParam(description = "broker地址") String addr,
@@ -77,7 +77,7 @@ public class Acl {
     }
 
     @Tool(description = "获取broker中的全部acl版本配置信息")
-    public String getAclVersionList(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getAclVersionList(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                     @ToolParam(description = "access key or ak") String ak,
                                     @ToolParam(description = "secret key or sk") String sk,
                                     @ToolParam(description = "broker地址") String addr) throws MQClientException {
@@ -91,7 +91,7 @@ public class Acl {
     }
 
     @Tool(description = "创建用户")
-    public String createUser(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String createUser(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                              @ToolParam(description = "access key or ak") String ak,
                              @ToolParam(description = "secret key or sk") String sk,
                              @ToolParam(description = "broker地址") String brokerAddr,
@@ -109,7 +109,7 @@ public class Acl {
     }
 
     @Tool(description = "更新用户")
-    public String updateUser(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateUser(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                              @ToolParam(description = "access key or ak") String ak,
                              @ToolParam(description = "secret key or sk") String sk,
                              @ToolParam(description = "broker地址") String brokerAddr,
@@ -128,7 +128,7 @@ public class Acl {
     }
 
     @Tool(description = "删除用户")
-    public String deleteUser(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String deleteUser(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                              @ToolParam(description = "access key or ak") String ak,
                              @ToolParam(description = "secret key or sk") String sk,
                              @ToolParam(description = "broker地址") String brokerAddr,
@@ -144,7 +144,7 @@ public class Acl {
     }
 
     @Tool(description = "获取用户信息")
-    public String getUser(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getUser(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                           @ToolParam(description = "access key or ak") String ak,
                           @ToolParam(description = "secret key or sk") String sk,
                           @ToolParam(description = "broker地址") String brokerAddr,
@@ -159,7 +159,7 @@ public class Acl {
     }
 
     @Tool(description = "查询全部用户信息")
-    public String getAllUsers(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getAllUsers(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                               @ToolParam(description = "access key or ak") String ak,
                               @ToolParam(description = "secret key or sk") String sk,
                               @ToolParam(description = "broker地址") String brokerAddr,
@@ -174,7 +174,7 @@ public class Acl {
     }
 
     @Tool(description = "创建ACL")
-    public String createAcl(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String createAcl(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                             @ToolParam(description = "access key or ak") String ak,
                             @ToolParam(description = "secret key or sk") String sk,
                             @ToolParam(description = "broker地址") String brokerAddr,
@@ -194,7 +194,7 @@ public class Acl {
     }
 
     @Tool(description = "更新ACL")
-    public String updateAcl(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateAcl(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                             @ToolParam(description = "access key or ak") String ak,
                             @ToolParam(description = "secret key or sk") String sk,
                             @ToolParam(description = "broker地址") String brokerAddr,
@@ -215,7 +215,7 @@ public class Acl {
 
 
     @Tool(description = "删除ACL")
-    public String deleteAcl(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String deleteAcl(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                             @ToolParam(description = "access key or ak") String ak,
                             @ToolParam(description = "secret key or sk") String sk,
                             @ToolParam(description = "broker地址") String brokerAddr,
@@ -232,7 +232,7 @@ public class Acl {
     }
 
     @Tool(description = "获取ACL信息")
-    public String getAcl(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getAcl(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                          @ToolParam(description = "access key or ak") String ak,
                          @ToolParam(description = "secret key or sk") String sk,
                          @ToolParam(description = "broker地址") String brokerAddr,
@@ -247,7 +247,7 @@ public class Acl {
     }
 
     @Tool(description = "获取全部的acl配置信息")
-    public String getAclList(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getAclList(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                              @ToolParam(description = "access key or ak") String ak,
                              @ToolParam(description = "secret key or sk") String sk,
                              @ToolParam(description = "broker地址") String brokerAddr,

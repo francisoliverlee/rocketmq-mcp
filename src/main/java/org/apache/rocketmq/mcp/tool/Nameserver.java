@@ -13,7 +13,7 @@ import java.util.Properties;
 public class Nameserver {
 
     @Tool(description = "获取NameServer地址列表")
-    public String getNameServerAddressList(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getNameServerAddressList(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                            @ToolParam(description = "access key or ak") String ak,
                                            @ToolParam(description = "secret key or sk") String sk) throws MQClientException {
         return AdminUtil.callAdmin(admin -> {
@@ -26,7 +26,7 @@ public class Nameserver {
     }
 
     @Tool(description = "添加KV配置")
-    public String putKVConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String putKVConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                               @ToolParam(description = "access key or ak") String ak,
                               @ToolParam(description = "secret key or sk") String sk,
                               @ToolParam(description = "命名空间") String namespace,
@@ -43,7 +43,7 @@ public class Nameserver {
     }
 
     @Tool(description = "获取KV配置")
-    public String getKVConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getKVConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                               @ToolParam(description = "access key or ak") String ak,
                               @ToolParam(description = "secret key or sk") String sk,
                               @ToolParam(description = "命名空间") String namespace,
@@ -58,7 +58,7 @@ public class Nameserver {
     }
 
     @Tool(description = "获取命名空间下的KV列表")
-    public String getKVListByNamespace(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getKVListByNamespace(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                        @ToolParam(description = "access key or ak") String ak,
                                        @ToolParam(description = "secret key or sk") String sk,
                                        @ToolParam(description = "命名空间") String namespace) throws MQClientException {
@@ -72,7 +72,7 @@ public class Nameserver {
     }
 
     @Tool(description = "创建或更新KV配置")
-    public String createAndUpdateKvConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String createAndUpdateKvConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                           @ToolParam(description = "access key or ak") String ak,
                                           @ToolParam(description = "secret key or sk") String sk,
                                           @ToolParam(description = "命名空间") String namespace,
@@ -89,7 +89,7 @@ public class Nameserver {
     }
 
     @Tool(description = "删除KV配置")
-    public String deleteKvConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String deleteKvConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                  @ToolParam(description = "access key or ak") String ak,
                                  @ToolParam(description = "secret key or sk") String sk,
                                  @ToolParam(description = "命名空间") String namespace,
@@ -105,7 +105,7 @@ public class Nameserver {
     }
 
     @Tool(description = "创建或更新顺序配置")
-    public String createOrUpdateOrderConf(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String createOrUpdateOrderConf(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                           @ToolParam(description = "access key or ak") String ak,
                                           @ToolParam(description = "secret key or sk") String sk,
                                           @ToolParam(description = "键") String key,
@@ -122,7 +122,7 @@ public class Nameserver {
     }
 
     @Tool(description = "更新NameServer配置")
-    public String updateNameServerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String updateNameServerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                          @ToolParam(description = "access key or ak") String ak,
                                          @ToolParam(description = "secret key or sk") String sk,
                                          @ToolParam(description = "配置属性") Properties properties,
@@ -138,7 +138,7 @@ public class Nameserver {
     }
 
     @Tool(description = "获取NameServer配置")
-    public String getNameServerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") String nameserverAddressList,
+    public String getNameServerConfig(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
                                       @ToolParam(description = "access key or ak") String ak,
                                       @ToolParam(description = "secret key or sk") String sk,
                                       @ToolParam(description = "nameserver地址列表") List<String> nameServers) throws MQClientException {
