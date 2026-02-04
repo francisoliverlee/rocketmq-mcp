@@ -1,6 +1,9 @@
 package org.apache.rocketmq.mcp.tool;
 
 import com.alibaba.fastjson2.JSON;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.mcp.common.AdminUtil;
@@ -11,10 +14,6 @@ import org.apache.rocketmq.remoting.protocol.body.ClusterInfo;
 import org.apache.rocketmq.tools.admin.DefaultMQAdminExt;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 
 @org.springframework.stereotype.Service
 public class Broker {
@@ -31,9 +30,9 @@ public class Broker {
 
     @Tool(description = "获取Broker统计信息")
     public String getBrokerRuntimeStats(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
-                                          @ToolParam(description = "access key or ak") String ak,
-                                          @ToolParam(description = "secret key or sk") String sk,
-                                          @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
+                                        @ToolParam(description = "access key or ak") String ak,
+                                        @ToolParam(description = "secret key or sk") String sk,
+                                        @ToolParam(description = "broker地址") String brokerAddr) throws MQClientException {
         return AdminUtil.callAdmin(admin -> {
             try {
                 return JSON.toJSONString(admin.fetchBrokerRuntimeStats(brokerAddr));

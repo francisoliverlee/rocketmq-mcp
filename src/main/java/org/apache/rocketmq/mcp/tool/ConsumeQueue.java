@@ -1,14 +1,13 @@
 package org.apache.rocketmq.mcp.tool;
 
 import com.alibaba.fastjson2.JSON;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.mcp.common.AdminUtil;
 import org.apache.rocketmq.remoting.protocol.header.ExportRocksDBConfigToJsonRequestHeader;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Service
 public class ConsumeQueue {

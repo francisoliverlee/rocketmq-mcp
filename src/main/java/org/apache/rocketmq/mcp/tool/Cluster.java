@@ -1,12 +1,11 @@
 package org.apache.rocketmq.mcp.tool;
 
 import com.alibaba.fastjson2.JSON;
+import java.util.List;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.mcp.common.AdminUtil;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
-
-import java.util.List;
 
 /**
  * 利用rocketmq的admin接口提供rocketmq集群信息管理服务

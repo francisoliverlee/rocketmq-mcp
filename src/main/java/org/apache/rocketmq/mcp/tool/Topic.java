@@ -1,16 +1,15 @@
 package org.apache.rocketmq.mcp.tool;
 
 import com.alibaba.fastjson2.JSON;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.TopicConfig;
 import org.apache.rocketmq.mcp.common.AdminUtil;
 import org.apache.rocketmq.remoting.protocol.statictopic.TopicQueueMappingDetail;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * 利用rocketmq的admin接口提供rocketmq集群信息管理服务
@@ -82,7 +81,7 @@ public class Topic {
     public String deleteTopicInBroker(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList, @ToolParam(description = "access key or ak") String ak, @ToolParam(description = "secret key or sk") String sk, @ToolParam(description = "broker地址") String brokerAddr, @ToolParam(description = "主题名称") String topic) throws MQClientException {
         return AdminUtil.callAdmin(admin -> {
             try {
-                admin.deleteTopicInBroker(new HashSet<>() {
+                admin.deleteTopicInBroker(new HashSet<String>() {
                     {
                         add(brokerAddr);
                     }

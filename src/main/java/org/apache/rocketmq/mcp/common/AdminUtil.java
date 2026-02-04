@@ -1,13 +1,12 @@
 package org.apache.rocketmq.mcp.common;
 
+import java.util.List;
+import java.util.function.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.acl.common.AclClientRPCHook;
 import org.apache.rocketmq.acl.common.SessionCredentials;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.tools.admin.DefaultMQAdminExt;
-
-import java.util.List;
-import java.util.function.Function;
 
 public class AdminUtil {
     private static final String DEFAULT_NAME_SERVER = System.getProperty("NS_ADDR", System.getenv("NS_ADDR"));
