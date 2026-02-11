@@ -1,9 +1,8 @@
 package org.apache.rocketmq.mcp.tool;
 
-import com.alibaba.fastjson2.JSON;
 import java.util.List;
-import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.mcp.common.AdminUtil;
+import org.apache.rocketmq.mcp.common.ApiResponse;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 
@@ -14,15 +13,16 @@ import org.springframework.ai.tool.annotation.ToolParam;
 public class Cluster {
 
     @Tool(description = "获取集群信息")
-    public String getClusterInfo(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
-                                 @ToolParam(description = "access key or ak") String ak,
-                                 @ToolParam(description = "secret key or sk") String sk) throws MQClientException {
-        return AdminUtil.callAdmin(admin -> {
+    public ApiResponse<Object> getClusterInfo(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList,
+                                              @ToolParam(description = "access key or ak") String ak,
+                                              @ToolParam(description = "secret key or sk") String sk) {
+        return AdminUtil.callAdminWithResponse(admin -> {
             try {
-                return JSON.toJSONString(admin.examineBrokerClusterInfo());
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
+                return admin.examineBrokerClusterInfo();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         }, ak, sk, nameserverAddressList);
     }
+
 }

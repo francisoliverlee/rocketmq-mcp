@@ -27,6 +27,52 @@ public class AdminUtil {
         }
     }
 
+    /**
+     * 新的callAdmin方法，返回统一的ApiResponse格式
+     */
+    public static <T> ApiResponse<T> callAdminWithResponse(Function<DefaultMQAdminExt, T> func, String ak, String sk, List<String> nameserverAddressList) {
+        // 参数验证 - 验证必填参数不能为空
+        ApiResponse<T> validationResult = validateRequiredParameters(ak, sk, nameserverAddressList);
+        if (validationResult != null) {
+            return validationResult;
+        }
+
+        String _ns = (nameserverAddressList == null || nameserverAddressList.isEmpty()) ? DEFAULT_NAME_SERVER : StringUtils.join(nameserverAddressList, ";");
+        String _ak = (ak == null || ak.trim().isEmpty()) ? DEFAULT_AK : ak.trim();
+        String _sk = (sk == null || sk.trim().isEmpty()) ? DEFAULT_SK : sk.trim();
+        DefaultMQAdminExt admin = null;
+        try {
+            admin = getAdmin(_ns, _ak, _sk);
+            T result = func.apply(admin);
+            return ApiResponse.success(result);
+        } catch (Exception ex) {
+            return ApiResponse.error(ex.getMessage());
+        } finally {
+            if (admin != null) {
+                admin.shutdown();
+            }
+        }
+    }
+
+    /**
+     * 验证必填参数不能为空
+     */
+    private static <T> ApiResponse<T> validateRequiredParameters(String ak, String sk, List<String> nameserverAddressList) {
+        if (nameserverAddressList == null || nameserverAddressList.isEmpty()) {
+            return ApiResponse.error("nameserverAddressList不能为空");
+        }
+
+        if (StringUtils.isBlank(ak)) {
+            return ApiResponse.error("ak不能为空");
+        }
+
+        if (StringUtils.isBlank(sk)) {
+            return ApiResponse.error("sk不能为空");
+        }
+
+        return null;
+    }
+
     public static DefaultMQAdminExt getAdmin(String nameserverAddressList, String ak, String sk) throws MQClientException {
         DefaultMQAdminExt admin = null;
         if (StringUtils.isNotBlank(ak) && StringUtils.isNotBlank(sk)) {

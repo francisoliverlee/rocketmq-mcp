@@ -16,6 +16,17 @@ import org.springframework.ai.tool.annotation.ToolParam;
  */
 @org.springframework.stereotype.Service
 public class Topic {
+    public static final List<String> WRITE_OPERATIONS = List.of(
+            "createAndUpdateTopicConfig",
+            "deleteTopicInBroker",
+            "createAndUpdateTopicConfigList",
+            "cleanUnusedTopic",
+            "createStaticTopic",
+            "deleteTopic",
+            "deleteTopicInNameServerWithCluster",
+            "deleteTopicInNameServer"
+    );
+
     @Tool(description = "获取主题列表")
     public String fetchAllTopicList(@ToolParam(description = "nameserver/namesrv 地址列表") List<String> nameserverAddressList, @ToolParam(description = "access key or ak") String ak, @ToolParam(description = "secret key or sk") String sk) throws MQClientException {
         return AdminUtil.callAdmin(admin -> {

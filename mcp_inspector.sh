@@ -1,0 +1,2 @@
+npx @modelcontextprotocol/inspector
+
